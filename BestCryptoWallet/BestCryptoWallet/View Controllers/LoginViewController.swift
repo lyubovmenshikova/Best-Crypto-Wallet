@@ -10,9 +10,11 @@ import UIKit
 final class LoginViewController: UIViewController {
     
     var loginView: LoginView
+    private let userData: UserData
     
-    init(loginView: LoginView) {
+    init(loginView: LoginView, userData: UserData) {
         self.loginView = loginView
+        self.userData = userData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,11 +25,9 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addConstraints()
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("\(names)")
-        }
+        self.loginView.loginAction = loginPressed
+        loginView.loginTextField.delegate = self
+        loginView.passwordTextField.delegate = self
     }
     
     
@@ -43,9 +43,56 @@ final class LoginViewController: UIViewController {
         ])
     }
     
-    
-    
+    func loginPressed() {
+        guard
+            loginView.loginTextField.text == userData.login,
+            loginView.passwordTextField.text == userData.password
+        else {
+            showAlert(title: "Неверный логин или пароль", message: "Пожалуйста, введите корректные данные")
+            return
+        }
+        print("It Is OK")
+    }
+}
 
- 
+//MARK: Alert
+extension LoginViewController {
+    
+    private func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: "OK",
+                                        style: .cancel,
+                                        handler: { [weak self] _ in
+            guard let self = self else {return}
+            self.loginView.loginTextField.text = nil
+            self.loginView.passwordTextField.text = nil
+        })
+        alertController.addAction(closeAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
 
+//MARK: TextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //по нажатию на вью клавиатура пропадает
+        self.view.endEditing(true)
+        loginView.loginTextField.text = nil
+        loginView.passwordTextField.text = nil
+    }
+    
+    // функция нажатия enter после ввода логина\
+    //не забудь установить делегата в коде либо как тут в сториборде
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == loginView.loginTextField {
+            loginView.passwordTextField.becomeFirstResponder()
+        } else {
+            loginPressed()
+        }
+        return true
+    }
+    
 }

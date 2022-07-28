@@ -9,11 +9,12 @@ import UIKit
 
 class LoginView: UIView {
     
+    var loginAction: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .systemGray6
-        
         setupHorizontalStackView()
         
         addSubview(greetingLabel)
@@ -97,6 +98,7 @@ class LoginView: UIView {
         button.setTitle("Войти", for: .normal)
         button.layer.cornerRadius = 5
         button.backgroundColor = UIColor(red: 53/255, green: 212/255, blue: 184/255, alpha: 0.6)
+        button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         
         return button
     }()
@@ -158,6 +160,10 @@ class LoginView: UIView {
             instructionLabel.heightAnchor.constraint(equalToConstant: 50),
             instructionLabel.widthAnchor.constraint(equalToConstant: 250)
         ])
+    }
+    
+    @objc func loginButtonPressed() {
+        loginAction?()
     }
     
    

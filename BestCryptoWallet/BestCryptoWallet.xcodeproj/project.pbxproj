@@ -13,7 +13,7 @@
 		9F41665C288D2CDF00374F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F41665A288D2CDF00374F8E /* LaunchScreen.storyboard */; };
 		9F416668288D307600374F8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416667288D307600374F8E /* LoginViewController.swift */; };
 		9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41666A288D7B1E00374F8E /* LoginView.swift */; };
-		9F41666D288F1FE400374F8E /* font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41666C288F1FE400374F8E /* font.swift */; };
+		9F4166702892535300374F8E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41666F2892535300374F8E /* UserDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		9F41665D288D2CDF00374F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F416667288D307600374F8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9F41666A288D7B1E00374F8E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		9F41666C288F1FE400374F8E /* font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = font.swift; sourceTree = "<group>"; };
+		9F41666F2892535300374F8E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +58,12 @@
 		9F41664E288D2CDD00374F8E /* BestCryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
+				9F41666E2892533F00374F8E /* Models */,
 				9F416669288D7B0500374F8E /* Views */,
 				9F416666288D2E8400374F8E /* View Controllers */,
 				9F416665288D2E7100374F8E /* LaunchScreen */,
 				9F416664288D2E6200374F8E /* Resourses */,
 				9F416663288D2E4200374F8E /* Supporting Files */,
-				9F41666C288F1FE400374F8E /* font.swift */,
 			);
 			path = BestCryptoWallet;
 			sourceTree = "<group>";
@@ -108,6 +108,14 @@
 				9F41666A288D7B1E00374F8E /* LoginView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9F41666E2892533F00374F8E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F41666F2892535300374F8E /* UserDataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +190,9 @@
 			files = (
 				9F416668288D307600374F8E /* LoginViewController.swift in Sources */,
 				9F416650288D2CDD00374F8E /* AppDelegate.swift in Sources */,
+				9F4166702892535300374F8E /* UserDataModel.swift in Sources */,
 				9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */,
 				9F416652288D2CDD00374F8E /* SceneDelegate.swift in Sources */,
-				9F41666D288F1FE400374F8E /* font.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
