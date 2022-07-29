@@ -14,6 +14,15 @@
 		9F416668288D307600374F8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416667288D307600374F8E /* LoginViewController.swift */; };
 		9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41666A288D7B1E00374F8E /* LoginView.swift */; };
 		9F4166702892535300374F8E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41666F2892535300374F8E /* UserDataModel.swift */; };
+		9F416672289274C700374F8E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416671289274C700374F8E /* MainTabBarController.swift */; };
+		9F4166762892832900374F8E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166752892832900374F8E /* ProfileViewController.swift */; };
+		9F4166782892BE2C00374F8E /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166772892BE2C00374F8E /* Tasks.swift */; };
+		9F41667F2892BF8A00374F8E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41667C2892BF8A00374F8E /* NetworkService.swift */; };
+		9F4166802892BF8A00374F8E /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41667D2892BF8A00374F8E /* DataFetcherService.swift */; };
+		9F4166812892BF8A00374F8E /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41667E2892BF8A00374F8E /* NetworkDataFetcher.swift */; };
+		9F41668328931FB400374F8E /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41668228931FB400374F8E /* CoinsModel.swift */; };
+		9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166852893A67C00374F8E /* CoinsTableViewCell.swift */; };
+		9F4166882893A98C00374F8E /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166872893A98C00374F8E /* CoinsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		9F416667288D307600374F8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9F41666A288D7B1E00374F8E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9F41666F2892535300374F8E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		9F416671289274C700374F8E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		9F4166752892832900374F8E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9F4166772892BE2C00374F8E /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		9F41667C2892BF8A00374F8E /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		9F41667D2892BF8A00374F8E /* DataFetcherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
+		9F41667E2892BF8A00374F8E /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		9F41668228931FB400374F8E /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
+		9F4166852893A67C00374F8E /* CoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTableViewCell.swift; sourceTree = "<group>"; };
+		9F4166872893A98C00374F8E /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +76,14 @@
 		9F41664E288D2CDD00374F8E /* BestCryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
+				9F41667B2892BF5700374F8E /* Services */,
 				9F41666E2892533F00374F8E /* Models */,
 				9F416669288D7B0500374F8E /* Views */,
 				9F416666288D2E8400374F8E /* View Controllers */,
 				9F416665288D2E7100374F8E /* LaunchScreen */,
 				9F416664288D2E6200374F8E /* Resourses */,
 				9F416663288D2E4200374F8E /* Supporting Files */,
+				9F4166772892BE2C00374F8E /* Tasks.swift */,
 			);
 			path = BestCryptoWallet;
 			sourceTree = "<group>";
@@ -98,6 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				9F416667288D307600374F8E /* LoginViewController.swift */,
+				9F416671289274C700374F8E /* MainTabBarController.swift */,
+				9F4166872893A98C00374F8E /* CoinsViewController.swift */,
+				9F4166752892832900374F8E /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -105,6 +128,7 @@
 		9F416669288D7B0500374F8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F4166842893A65900374F8E /* Cells */,
 				9F41666A288D7B1E00374F8E /* LoginView.swift */,
 			);
 			path = Views;
@@ -114,8 +138,27 @@
 			isa = PBXGroup;
 			children = (
 				9F41666F2892535300374F8E /* UserDataModel.swift */,
+				9F41668228931FB400374F8E /* CoinsModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9F41667B2892BF5700374F8E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9F41667D2892BF8A00374F8E /* DataFetcherService.swift */,
+				9F41667E2892BF8A00374F8E /* NetworkDataFetcher.swift */,
+				9F41667C2892BF8A00374F8E /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9F4166842893A65900374F8E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9F4166852893A67C00374F8E /* CoinsTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +231,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */,
+				9F4166812892BF8A00374F8E /* NetworkDataFetcher.swift in Sources */,
+				9F41667F2892BF8A00374F8E /* NetworkService.swift in Sources */,
 				9F416668288D307600374F8E /* LoginViewController.swift in Sources */,
 				9F416650288D2CDD00374F8E /* AppDelegate.swift in Sources */,
+				9F416672289274C700374F8E /* MainTabBarController.swift in Sources */,
 				9F4166702892535300374F8E /* UserDataModel.swift in Sources */,
+				9F4166802892BF8A00374F8E /* DataFetcherService.swift in Sources */,
+				9F4166782892BE2C00374F8E /* Tasks.swift in Sources */,
 				9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */,
 				9F416652288D2CDD00374F8E /* SceneDelegate.swift in Sources */,
+				9F4166882893A98C00374F8E /* CoinsViewController.swift in Sources */,
+				9F4166762892832900374F8E /* ProfileViewController.swift in Sources */,
+				9F41668328931FB400374F8E /* CoinsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

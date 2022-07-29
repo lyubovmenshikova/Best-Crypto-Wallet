@@ -16,11 +16,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        let loginView = LoginView()
-        let loginViewController = LoginViewController(loginView: loginView, userData: UserData.getUserData())
-       
-        self.window?.rootViewController = loginViewController
+        if UserDefaults.standard.bool(forKey: "Logged_in") {
+            // navigate to main tab bar page
+            let mainTabBarController = MainTabBarController()
+            window?.rootViewController = mainTabBarController
+        } else {
+            // navigate to login screen
+            let loginView = LoginView()
+            let loginViewController = LoginViewController(loginView: loginView, userData: UserData.getUserData())
+            self.window?.rootViewController = loginViewController
+             }
         self.window?.makeKeyAndVisible()
+    }
+    
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else { return }
+        
+        // change the root view controller to your specific view controller
+        window.rootViewController = vc
+        
+        // add animation
+            UIView.transition(with: window,
+                              duration: 0.5,
+                              options: [.transitionFlipFromBottom],
+                              animations: nil,
+                              completion: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

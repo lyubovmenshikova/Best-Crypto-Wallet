@@ -51,7 +51,9 @@ final class LoginViewController: UIViewController {
             showAlert(title: "Неверный логин или пароль", message: "Пожалуйста, введите корректные данные")
             return
         }
-        print("It Is OK")
+        let mainTabBarController = MainTabBarController()
+        UserDefaults.standard.set(true, forKey: "Logged_in")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
 }
 
@@ -78,14 +80,13 @@ extension LoginViewController {
 extension LoginViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //по нажатию на вью клавиатура пропадает
+        //keyboard disappears after pressing view
         self.view.endEditing(true)
         loginView.loginTextField.text = nil
         loginView.passwordTextField.text = nil
     }
     
-    // функция нажатия enter после ввода логина\
-    //не забудь установить делегата в коде либо как тут в сториборде
+    // pressing enter after login. in viewDidLoad sets delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == loginView.loginTextField {
             loginView.passwordTextField.becomeFirstResponder()
