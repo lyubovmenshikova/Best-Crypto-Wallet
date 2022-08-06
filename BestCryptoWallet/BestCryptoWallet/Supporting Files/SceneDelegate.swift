@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         if UserDefaults.standard.bool(forKey: "Logged_in") {
-            // navigate to main tab bar page
+            // navigate to main nav bar page
             let mainTabBarController = MainTabBarController()
             window?.rootViewController = mainTabBarController
         } else {

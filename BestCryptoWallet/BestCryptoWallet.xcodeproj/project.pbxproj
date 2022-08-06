@@ -23,6 +23,11 @@
 		9F41668328931FB400374F8E /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41668228931FB400374F8E /* CoinsModel.swift */; };
 		9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166852893A67C00374F8E /* CoinsTableViewCell.swift */; };
 		9F4166882893A98C00374F8E /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166872893A98C00374F8E /* CoinsViewController.swift */; };
+		9F41668C2895BDB900374F8E /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41668B2895BDB900374F8E /* SortBy.swift */; };
+		9F416690289966FF00374F8E /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41668F289966FF00374F8E /* ModalViewController.swift */; };
+		9F4166922899B6F700374F8E /* SortViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166912899B6F700374F8E /* SortViewCell.swift */; };
+		9F416694289B0DDC00374F8E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416693289B0DDC00374F8E /* DetailViewController.swift */; };
+		9F416696289C046000374F8E /* OneCoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416695289C045F00374F8E /* OneCoinModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,11 @@
 		9F41668228931FB400374F8E /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
 		9F4166852893A67C00374F8E /* CoinsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsTableViewCell.swift; sourceTree = "<group>"; };
 		9F4166872893A98C00374F8E /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
+		9F41668B2895BDB900374F8E /* SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBy.swift; sourceTree = "<group>"; };
+		9F41668F289966FF00374F8E /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		9F4166912899B6F700374F8E /* SortViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewCell.swift; sourceTree = "<group>"; };
+		9F416693289B0DDC00374F8E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9F416695289C045F00374F8E /* OneCoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCoinModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +91,8 @@
 				9F416669288D7B0500374F8E /* Views */,
 				9F416666288D2E8400374F8E /* View Controllers */,
 				9F416665288D2E7100374F8E /* LaunchScreen */,
-				9F416664288D2E6200374F8E /* Resourses */,
 				9F416663288D2E4200374F8E /* Supporting Files */,
+				9F416664288D2E6200374F8E /* Resourses */,
 				9F4166772892BE2C00374F8E /* Tasks.swift */,
 			);
 			path = BestCryptoWallet;
@@ -120,7 +130,9 @@
 				9F416667288D307600374F8E /* LoginViewController.swift */,
 				9F416671289274C700374F8E /* MainTabBarController.swift */,
 				9F4166872893A98C00374F8E /* CoinsViewController.swift */,
+				9F41668F289966FF00374F8E /* ModalViewController.swift */,
 				9F4166752892832900374F8E /* ProfileViewController.swift */,
+				9F416693289B0DDC00374F8E /* DetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -139,6 +151,8 @@
 			children = (
 				9F41666F2892535300374F8E /* UserDataModel.swift */,
 				9F41668228931FB400374F8E /* CoinsModel.swift */,
+				9F41668B2895BDB900374F8E /* SortBy.swift */,
+				9F416695289C045F00374F8E /* OneCoinModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				9F4166852893A67C00374F8E /* CoinsTableViewCell.swift */,
+				9F4166912899B6F700374F8E /* SortViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -231,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F416690289966FF00374F8E /* ModalViewController.swift in Sources */,
 				9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */,
 				9F4166812892BF8A00374F8E /* NetworkDataFetcher.swift in Sources */,
 				9F41667F2892BF8A00374F8E /* NetworkService.swift in Sources */,
@@ -239,11 +255,15 @@
 				9F416672289274C700374F8E /* MainTabBarController.swift in Sources */,
 				9F4166702892535300374F8E /* UserDataModel.swift in Sources */,
 				9F4166802892BF8A00374F8E /* DataFetcherService.swift in Sources */,
+				9F416694289B0DDC00374F8E /* DetailViewController.swift in Sources */,
 				9F4166782892BE2C00374F8E /* Tasks.swift in Sources */,
+				9F41668C2895BDB900374F8E /* SortBy.swift in Sources */,
 				9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */,
+				9F4166922899B6F700374F8E /* SortViewCell.swift in Sources */,
 				9F416652288D2CDD00374F8E /* SceneDelegate.swift in Sources */,
 				9F4166882893A98C00374F8E /* CoinsViewController.swift in Sources */,
 				9F4166762892832900374F8E /* ProfileViewController.swift in Sources */,
+				9F416696289C046000374F8E /* OneCoinModel.swift in Sources */,
 				9F41668328931FB400374F8E /* CoinsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_OPTIMIZATION_PROFILE_FILE = "Users/lyubovmenshikova/Desktop/Стажировка в Anderson/Best Crypto Wallet/BestCryptoWallet/OptimizationProfiles/BestCryptoWallet.profdata";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 96QG56R7V3;
@@ -408,6 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_OPTIMIZATION_PROFILE_FILE = "Users/lyubovmenshikova/Desktop/Стажировка в Anderson/Best Crypto Wallet/BestCryptoWallet/OptimizationProfiles/BestCryptoWallet.profdata";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 96QG56R7V3;

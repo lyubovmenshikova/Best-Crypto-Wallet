@@ -56,6 +56,7 @@ class ProfileViewController: UIViewController {
         let loginViewController = LoginViewController(loginView: LoginView(), userData: UserData.getUserData())
         UserDefaults.standard.set(false, forKey: "Logged_in")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)
+        UserDefaults.standard.removeObject(forKey: "selectedIndex")
     }
 
 

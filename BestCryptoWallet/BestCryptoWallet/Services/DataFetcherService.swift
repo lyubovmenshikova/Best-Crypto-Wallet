@@ -21,4 +21,9 @@ class DataFetcherService {
         dataFetcher.fetchGenericJSONData(urlString: urlCoins, response: completion)
     }
     
+    func fetchOneCoin (symbol: String, completion: @escaping (OneCoinModel?) -> Void) {
+        let urlOneCoin = "https://data.messari.io/api/v1/assets/\(symbol)/profile"
+        dataFetcher.fetchGenericJSONData(urlString: urlOneCoin, response: completion)
+    }
+    
 }
