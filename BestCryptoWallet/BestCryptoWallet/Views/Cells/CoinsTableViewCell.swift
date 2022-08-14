@@ -82,5 +82,10 @@ class CoinsTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        backgroundColor = .white
+    }
+    
 
 }

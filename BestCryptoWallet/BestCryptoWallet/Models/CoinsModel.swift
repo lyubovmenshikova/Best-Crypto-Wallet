@@ -12,9 +12,10 @@ struct CoinsModel: Decodable {
 }
 
 struct Items: Decodable {
-    let symbol: String
+    let symbol: String?
     let name: String
     let metrics: Metrics
+    let profile: Profile
 }
 
 struct Metrics: Decodable {
@@ -25,6 +26,14 @@ struct MarketData: Decodable {
     let price_usd: Double
     let percent_change_usd_last_1_hour: Double?
     let percent_change_usd_last_24_hours: Double?
+}
+
+struct Profile: Decodable {
+    let token_distribution: Token
+}
+
+struct Token: Decodable {
+    let description: String?
 }
 
 
