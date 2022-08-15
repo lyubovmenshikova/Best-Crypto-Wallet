@@ -43,13 +43,30 @@ class CoinsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
     
+    
     private func getCoins() {
-        DataFetcherService.sharedInstance.fetchCoins { [weak self] coinsModel in
-            guard let coinsModel = coinsModel,
-                  let self = self else { return }
-            self.coins = coinsModel.data
-            self.tableView.reloadData()
-        }
+        DataFetcherService.sharedInstance.fetchCoins { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let coinsModel):
+                self.coins = coinsModel?.data ?? []
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+                self.showAlert(title: "Что то пошло не так")
+            }
+        }   
+    }
+    
+    private func showAlert(title: String) {
+        let alertController = UIAlertController(title: title,
+                                                message: nil,
+                                                preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: "OK",
+                                        style: .cancel,
+                                        handler: nil)
+        alertController.addAction(closeAction)
+        present(alertController, animated: true, completion: nil)
     }
 
 }
@@ -81,7 +98,6 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
         let nav = UINavigationController(rootViewController: modalViewController)
         nav.modalPresentationStyle = .pageSheet
         
-        
         if let sheet = nav.sheetPresentationController {
             sheet.detents = [.medium()]
         }
@@ -93,8 +109,36 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
         detailVC.symbol = coins[indexPath.row].symbol
         
         present(detailVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        header.backgroundColor = UIColor(red: 53/255, green: 212/255, blue: 184/255, alpha: 0.8)
         
-       // navigationController?.pushViewController(detailVC, animated: true)
+        let priceLabel = UILabel(frame: CGRect(x: 95, y: 5, width: 80, height: header.frame.size.height - 10))
+        priceLabel.text = "Цена"
+        priceLabel.textAlignment = .right
+        
+        let changeOneHourLabel = UILabel(frame: CGRect(x: 30 + priceLabel.frame.maxX, y: 5, width: 80, height: header.frame.size.height - 10))
+        changeOneHourLabel.font = UIFont(name: "Arial", size: 15)
+        changeOneHourLabel.text = "Изменения за час"
+        changeOneHourLabel.numberOfLines = 0
+        changeOneHourLabel.textAlignment = .center
+        
+        let changeDayLabel = UILabel(frame: CGRect(x: 15 + changeOneHourLabel.frame.maxX, y: 5, width: 60, height: header.frame.size.height - 10))
+        changeDayLabel.font = UIFont(name: "Arial", size: 15)
+        changeDayLabel.text = "За сутки"
+        changeDayLabel.numberOfLines = 0
+        changeDayLabel.textAlignment = .center
+        
+        header.addSubview(priceLabel)
+        header.addSubview(changeOneHourLabel)
+        header.addSubview(changeDayLabel)
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
 }

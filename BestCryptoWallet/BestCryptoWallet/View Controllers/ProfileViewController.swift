@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BackgroundViewController {
     
     private let logOutButton: UIButton = {
         let button = UIButton()
@@ -32,7 +32,6 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
         view.addSubview(welcomeLabel)
         view.addSubview(logOutButton)
         setupLayout()

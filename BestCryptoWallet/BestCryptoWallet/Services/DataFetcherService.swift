@@ -16,12 +16,12 @@ class DataFetcherService {
         self.dataFetcher = dataFetcher
     }
     
-    func fetchCoins (completion: @escaping (CoinsModel?) -> Void) {
+    func fetchCoins (completion: @escaping (Result<CoinsModel?, Error>) -> Void) {
         let urlCoins = "https://data.messari.io/api/v1/assets"
         dataFetcher.fetchGenericJSONData(urlString: urlCoins, response: completion)
     }
     
-    func fetchOneCoin (symbol: String, completion: @escaping (OneCoinModel?) -> Void) {
+    func fetchOneCoin (symbol: String, completion: @escaping (Result<OneCoinModel?, Error>) -> Void) {
         let urlOneCoin = "https://data.messari.io/api/v1/assets/\(symbol)/profile"
         dataFetcher.fetchGenericJSONData(urlString: urlOneCoin, response: completion)
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: BackgroundViewController {
     
     let iconImage: UIImageView = {
         let imageView = UIImageView()
@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
     
     var taglineLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .natural
+        label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont(name: "Damascus", size: 18)
         return label
@@ -40,20 +40,22 @@ class DetailViewController: UIViewController {
         view.addSubview(taglineLabel)
         view.addSubview(iconImage)
         
-        view.backgroundColor = .systemGray6
         getInfo()
         setupConstraints()
     }
     
     private func getInfo() {
         if let symbol = symbol {
-            DataFetcherService.sharedInstance.fetchOneCoin(symbol: symbol) { [weak self] item in
-                guard let item = item,
-                      let self = self else { return }
-                self.nameLabel.text = item.data.name
-                self.taglineLabel.text = item.data.tagline ?? "Нет слогана"
+            DataFetcherService.sharedInstance.fetchOneCoin(symbol: symbol) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let oneCoin):
+                    self.nameLabel.text = oneCoin?.data.name ?? "No name"
+                    self.taglineLabel.text = oneCoin?.data.tagline ?? "Нет слогана"
+                case .failure(let error):
+                    print(error)
+                }
             }
-
         }
     }
     
@@ -72,7 +74,8 @@ class DetailViewController: UIViewController {
             nameLabel.heightAnchor.constraint(equalToConstant: 50),
             taglineLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             taglineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            taglineLabel.heightAnchor.constraint(equalToConstant: 50)
+            taglineLabel.heightAnchor.constraint(equalToConstant: 50),
+            taglineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 30)
         ])
     }
 

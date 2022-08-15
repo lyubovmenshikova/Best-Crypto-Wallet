@@ -28,6 +28,8 @@
 		9F4166922899B6F700374F8E /* SortViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4166912899B6F700374F8E /* SortViewCell.swift */; };
 		9F416694289B0DDC00374F8E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416693289B0DDC00374F8E /* DetailViewController.swift */; };
 		9F416696289C046000374F8E /* OneCoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416695289C045F00374F8E /* OneCoinModel.swift */; };
+		9F41669C28A9523E00374F8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41669B28A9523E00374F8E /* NetworkError.swift */; };
+		9FBC734628AA366B001F7CE6 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		9F4166912899B6F700374F8E /* SortViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewCell.swift; sourceTree = "<group>"; };
 		9F416693289B0DDC00374F8E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9F416695289C045F00374F8E /* OneCoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCoinModel.swift; sourceTree = "<group>"; };
+		9F41669B28A9523E00374F8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 				9F41668F289966FF00374F8E /* ModalViewController.swift */,
 				9F4166752892832900374F8E /* ProfileViewController.swift */,
 				9F416693289B0DDC00374F8E /* DetailViewController.swift */,
+				9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				9F41667D2892BF8A00374F8E /* DataFetcherService.swift */,
 				9F41667E2892BF8A00374F8E /* NetworkDataFetcher.swift */,
 				9F41667C2892BF8A00374F8E /* NetworkService.swift */,
+				9F41669B28A9523E00374F8E /* NetworkError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -255,8 +261,10 @@
 				9F416672289274C700374F8E /* MainTabBarController.swift in Sources */,
 				9F4166702892535300374F8E /* UserDataModel.swift in Sources */,
 				9F4166802892BF8A00374F8E /* DataFetcherService.swift in Sources */,
+				9F41669C28A9523E00374F8E /* NetworkError.swift in Sources */,
 				9F416694289B0DDC00374F8E /* DetailViewController.swift in Sources */,
 				9F4166782892BE2C00374F8E /* Tasks.swift in Sources */,
+				9FBC734628AA366B001F7CE6 /* BackgroundViewController.swift in Sources */,
 				9F41668C2895BDB900374F8E /* SortBy.swift in Sources */,
 				9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */,
 				9F4166922899B6F700374F8E /* SortViewCell.swift in Sources */,
