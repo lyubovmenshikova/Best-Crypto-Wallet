@@ -30,7 +30,6 @@
 		9F416696289C046000374F8E /* OneCoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416695289C045F00374F8E /* OneCoinModel.swift */; };
 		9F41669C28A9523E00374F8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41669B28A9523E00374F8E /* NetworkError.swift */; };
 		9F8ED09F28B37476001E0D6B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */; };
-		9F8ED0A128B37DC7001E0D6B /* DetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED0A028B37DC7001E0D6B /* DetailProtocols.swift */; };
 		9F8ED0A328B37E4F001E0D6B /* DetailsViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */; };
 		9FBC734628AA366B001F7CE6 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		9F416695289C045F00374F8E /* OneCoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCoinModel.swift; sourceTree = "<group>"; };
 		9F41669B28A9523E00374F8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		9F8ED0A028B37DC7001E0D6B /* DetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProtocols.swift; sourceTree = "<group>"; };
 		9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerBuilder.swift; sourceTree = "<group>"; };
 		9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,7 +191,6 @@
 			children = (
 				9F416693289B0DDC00374F8E /* DetailViewController.swift */,
 				9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */,
-				9F8ED0A028B37DC7001E0D6B /* DetailProtocols.swift */,
 				9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */,
 			);
 			path = Detail;
@@ -269,7 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F8ED0A128B37DC7001E0D6B /* DetailProtocols.swift in Sources */,
 				9F416690289966FF00374F8E /* ModalViewController.swift in Sources */,
 				9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */,
 				9F4166812892BF8A00374F8E /* NetworkDataFetcher.swift in Sources */,

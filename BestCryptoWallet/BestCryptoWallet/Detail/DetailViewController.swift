@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class DetailViewController: BackgroundViewController {
     
@@ -32,7 +33,8 @@ class DetailViewController: BackgroundViewController {
         return label
     }()
     
-    var viewModel: (DetailViewControllerProtocolIn & DetailViewControllerProtocolOut)?
+    var viewModel: DetailViewModel?
+    private var observer: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,18 +43,18 @@ class DetailViewController: BackgroundViewController {
         view.addSubview(taglineLabel)
         view.addSubview(iconImage)
         
-        lissenViewModel()
+        setupBinders()
+        viewModel?.getCoinModel()
         setupConstraints()
     }
     
-    private func lissenViewModel() {
-        guard var viewModel = viewModel else { return }
-        viewModel.getCoinModel()
-        viewModel.setCoinModel = { [weak self] coinModel in
+    private func setupBinders() {
+        guard let viewModel = viewModel else { return }
+        observer = viewModel.$oneCoinModel.sink(receiveValue: { [weak self] oneCoinModel in
             guard let self = self else { return }
-            self.nameLabel.text = coinModel?.data.name
-            self.taglineLabel.text = coinModel?.data.tagline
-        }
+            self.nameLabel.text = oneCoinModel?.data.name ?? "Нет информации"
+            self.taglineLabel.text = oneCoinModel?.data.tagline ?? "Нет слогана"
+        })
     }
     
     private func setupConstraints() {
