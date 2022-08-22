@@ -32,30 +32,26 @@ class DetailViewController: BackgroundViewController {
         return label
     }()
     
-    var symbol: String?
+    var viewModel: (DetailViewControllerProtocolIn & DetailViewControllerProtocolOut)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         view.addSubview(nameLabel)
         view.addSubview(taglineLabel)
         view.addSubview(iconImage)
         
-        getInfo()
+        lissenViewModel()
         setupConstraints()
     }
     
-    private func getInfo() {
-        if let symbol = symbol {
-            DataFetcherService.sharedInstance.fetchOneCoin(symbol: symbol) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let oneCoin):
-                    self.nameLabel.text = oneCoin?.data.name ?? "No name"
-                    self.taglineLabel.text = oneCoin?.data.tagline ?? "Нет слогана"
-                case .failure(let error):
-                    print(error)
-                }
-            }
+    private func lissenViewModel() {
+        guard var viewModel = viewModel else { return }
+        viewModel.getCoinModel()
+        viewModel.setCoinModel = { [weak self] coinModel in
+            guard let self = self else { return }
+            self.nameLabel.text = coinModel?.data.name
+            self.taglineLabel.text = coinModel?.data.tagline
         }
     }
     

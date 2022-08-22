@@ -105,8 +105,8 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        detailVC.symbol = coins[indexPath.row].symbol
+        let symbol = coins[indexPath.row].symbol ?? ""
+        let detailVC = DetailsViewControllerBuilder.build(symbol: symbol)
         
         present(detailVC, animated: true)
     }

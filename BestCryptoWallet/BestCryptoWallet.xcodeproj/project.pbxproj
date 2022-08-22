@@ -29,6 +29,9 @@
 		9F416694289B0DDC00374F8E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416693289B0DDC00374F8E /* DetailViewController.swift */; };
 		9F416696289C046000374F8E /* OneCoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F416695289C045F00374F8E /* OneCoinModel.swift */; };
 		9F41669C28A9523E00374F8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41669B28A9523E00374F8E /* NetworkError.swift */; };
+		9F8ED09F28B37476001E0D6B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */; };
+		9F8ED0A128B37DC7001E0D6B /* DetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED0A028B37DC7001E0D6B /* DetailProtocols.swift */; };
+		9F8ED0A328B37E4F001E0D6B /* DetailsViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */; };
 		9FBC734628AA366B001F7CE6 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,9 @@
 		9F416693289B0DDC00374F8E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9F416695289C045F00374F8E /* OneCoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCoinModel.swift; sourceTree = "<group>"; };
 		9F41669B28A9523E00374F8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		9F8ED0A028B37DC7001E0D6B /* DetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProtocols.swift; sourceTree = "<group>"; };
+		9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerBuilder.swift; sourceTree = "<group>"; };
 		9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +96,7 @@
 		9F41664E288D2CDD00374F8E /* BestCryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
+				9F8ED09D28B37443001E0D6B /* Detail */,
 				9F41667B2892BF5700374F8E /* Services */,
 				9F41666E2892533F00374F8E /* Models */,
 				9F416669288D7B0500374F8E /* Views */,
@@ -136,7 +143,6 @@
 				9F4166872893A98C00374F8E /* CoinsViewController.swift */,
 				9F41668F289966FF00374F8E /* ModalViewController.swift */,
 				9F4166752892832900374F8E /* ProfileViewController.swift */,
-				9F416693289B0DDC00374F8E /* DetailViewController.swift */,
 				9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */,
 			);
 			path = "View Controllers";
@@ -180,6 +186,17 @@
 				9F4166912899B6F700374F8E /* SortViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		9F8ED09D28B37443001E0D6B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				9F416693289B0DDC00374F8E /* DetailViewController.swift */,
+				9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */,
+				9F8ED0A028B37DC7001E0D6B /* DetailProtocols.swift */,
+				9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,15 +269,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8ED0A128B37DC7001E0D6B /* DetailProtocols.swift in Sources */,
 				9F416690289966FF00374F8E /* ModalViewController.swift in Sources */,
 				9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */,
 				9F4166812892BF8A00374F8E /* NetworkDataFetcher.swift in Sources */,
 				9F41667F2892BF8A00374F8E /* NetworkService.swift in Sources */,
+				9F8ED0A328B37E4F001E0D6B /* DetailsViewControllerBuilder.swift in Sources */,
 				9F416668288D307600374F8E /* LoginViewController.swift in Sources */,
 				9F416650288D2CDD00374F8E /* AppDelegate.swift in Sources */,
 				9F416672289274C700374F8E /* MainTabBarController.swift in Sources */,
 				9F4166702892535300374F8E /* UserDataModel.swift in Sources */,
 				9F4166802892BF8A00374F8E /* DataFetcherService.swift in Sources */,
+				9F8ED09F28B37476001E0D6B /* DetailViewModel.swift in Sources */,
 				9F41669C28A9523E00374F8E /* NetworkError.swift in Sources */,
 				9F416694289B0DDC00374F8E /* DetailViewController.swift in Sources */,
 				9F4166782892BE2C00374F8E /* Tasks.swift in Sources */,
