@@ -11,6 +11,7 @@ final class LoginViewController: UIViewController {
     
     var loginView: LoginView
     private let userData: UserData
+    var viewModel: LoginViewModel?
     
     init(loginView: LoginView, userData: UserData) {
         self.loginView = loginView
@@ -24,6 +25,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addConstraints()
         self.loginView.loginAction = loginPressed
         loginView.loginTextField.delegate = self

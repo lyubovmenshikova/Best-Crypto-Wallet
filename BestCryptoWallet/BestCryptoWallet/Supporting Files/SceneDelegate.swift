@@ -22,9 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = mainTabBarController
         } else {
             // navigate to login screen
-            let loginView = LoginView()
-            let loginViewController = LoginViewController(loginView: loginView, userData: UserData.getUserData())
-            self.window?.rootViewController = loginViewController
+            self.window?.rootViewController = LoginViewControllerBuilder.build()
              }
         self.window?.makeKeyAndVisible()
     }
