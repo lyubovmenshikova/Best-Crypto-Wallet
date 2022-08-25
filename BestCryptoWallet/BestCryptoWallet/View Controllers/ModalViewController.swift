@@ -46,7 +46,7 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource {
         if let sortOption = SortBy(index: indexPath.row) {
             cell.textLabel?.text = sortOption.description
         
-            if let objects = UserDefaults.standard.object(forKey: "selectedIndex") {
+            if UserDefaults.standard.object(forKey: "selectedIndex") != nil {
                 let selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
                 if sortOption == SortBy(rawValue: selectedIndex) {
                     cell.accessoryType = .checkmark

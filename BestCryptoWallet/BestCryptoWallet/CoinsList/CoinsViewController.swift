@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import Combine
 
 class CoinsViewController: UIViewController {
     
     var coins: [Items]!
+    var viewModel: CoinsViewModel? {
+        didSet {
+            viewModel?.getCoinsModel {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    private var cancellables: Set<AnyCancellable> = []
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -27,35 +36,51 @@ class CoinsViewController: UIViewController {
         tableView.dataSource = self
         
         setupNavigation()
+        setupBinders()
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
-        getCoins()
     }
     
     private func setupNavigation() {
-        
         let sortButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet.indent"), style: .plain, target: self, action: #selector(presentModalController))
         navigationItem.rightBarButtonItem = sortButton
         navigationController?.navigationBar.tintColor = .black
     }
     
+    @objc func presentModalController() {
+        let modalViewController = ModalViewController()
+        modalViewController.delegate = self
+        let nav = UINavigationController(rootViewController: modalViewController)
+        nav.modalPresentationStyle = .pageSheet
+        
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        present(nav, animated: true)
+    }
     
-    private func getCoins() {
-        DataFetcherService.sharedInstance.fetchCoins { [weak self] result in
+    
+    private func setupBinders() {
+        guard let viewModel = viewModel else { return }
+        viewModel.$coins.sink(receiveValue: { [weak self] coins in
             guard let self = self else { return }
-            switch result {
-            case .success(let coinsModel):
-                self.coins = coinsModel?.data ?? []
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+            if let coins = coins {
+                self.coins = coins
+            }
+        }).store(in: &cancellables)
+        viewModel.$result.sink { [weak self] result in
+            guard let self = self,
+                  let result = result else { return }
+            if result {
+                print("succes")
+            } else {
                 self.showAlert(title: "Что то пошло не так")
             }
-        }   
+        }.store(in: &cancellables)
     }
     
     private func showAlert(title: String) {
@@ -91,18 +116,6 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
-    @objc func presentModalController() {
-        
-        let modalViewController = ModalViewController()
-        modalViewController.delegate = self
-        let nav = UINavigationController(rootViewController: modalViewController)
-        nav.modalPresentationStyle = .pageSheet
-        
-        if let sheet = nav.sheetPresentationController {
-            sheet.detents = [.medium()]
-        }
-        present(nav, animated: true)
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let symbol = coins[indexPath.row].symbol ?? ""
@@ -113,30 +126,30 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
-        header.backgroundColor = UIColor(red: 53/255, green: 212/255, blue: 184/255, alpha: 0.8)
-        
+        header.backgroundColor = UIColor(red: 53/255, green: 212/255, blue: 184/255, alpha: 0.95)
+
         let priceLabel = UILabel(frame: CGRect(x: 95, y: 5, width: 80, height: header.frame.size.height - 10))
         priceLabel.text = "Цена"
         priceLabel.textAlignment = .right
-        
+
         let changeOneHourLabel = UILabel(frame: CGRect(x: 30 + priceLabel.frame.maxX, y: 5, width: 80, height: header.frame.size.height - 10))
         changeOneHourLabel.font = UIFont(name: "Arial", size: 15)
         changeOneHourLabel.text = "Изменения за час"
         changeOneHourLabel.numberOfLines = 0
         changeOneHourLabel.textAlignment = .center
-        
+
         let changeDayLabel = UILabel(frame: CGRect(x: 15 + changeOneHourLabel.frame.maxX, y: 5, width: 60, height: header.frame.size.height - 10))
         changeDayLabel.font = UIFont(name: "Arial", size: 15)
         changeDayLabel.text = "За сутки"
         changeDayLabel.numberOfLines = 0
         changeDayLabel.textAlignment = .center
-        
+
         header.addSubview(priceLabel)
         header.addSubview(changeOneHourLabel)
         header.addSubview(changeDayLabel)
         return header
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }

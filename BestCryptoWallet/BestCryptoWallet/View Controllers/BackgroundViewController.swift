@@ -14,5 +14,4 @@ class BackgroundViewController: UIViewController {
         view.backgroundColor = .systemGray6
     }
 
-
 }

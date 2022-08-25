@@ -31,7 +31,7 @@ class MainTabBarController: UITabBarController {
     }
    
     private func setViewControllers() {
-        let coinsTableViewController = UINavigationController(rootViewController: CoinsViewController())
+        let coinsTableViewController = UINavigationController(rootViewController: CoinsViewControllerBuilder.build())
         let profileViewController = UINavigationController(rootViewController: ProfileViewController()) 
         
         coinsTableViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "list.bullet.rectangle.portrait"), selectedImage: UIImage(systemName: "list.bullet.rectangle.portrait.fill"))
