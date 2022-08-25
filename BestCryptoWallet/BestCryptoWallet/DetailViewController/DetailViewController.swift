@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class DetailViewController: BackgroundViewController {
+final class DetailViewController: BackgroundViewController {
     
     let iconImage: UIImageView = {
         let imageView = UIImageView()

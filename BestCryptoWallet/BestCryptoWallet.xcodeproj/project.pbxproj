@@ -30,6 +30,8 @@
 		9F41669C28A9523E00374F8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F41669B28A9523E00374F8E /* NetworkError.swift */; };
 		9F47851828B3A3EA004029F1 /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47851728B3A3EA004029F1 /* CoinsViewModel.swift */; };
 		9F47851A28B3A400004029F1 /* CoinsViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47851928B3A400004029F1 /* CoinsViewControllerBuilder.swift */; };
+		9F47851D28B79848004029F1 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47851C28B79848004029F1 /* ModalViewModel.swift */; };
+		9F47851F28B7985D004029F1 /* ModalViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47851E28B7985D004029F1 /* ModalViewControllerBuilder.swift */; };
 		9F8ED09F28B37476001E0D6B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */; };
 		9F8ED0A328B37E4F001E0D6B /* DetailsViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */; };
 		9FBC734628AA366B001F7CE6 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */; };
@@ -61,6 +63,8 @@
 		9F41669B28A9523E00374F8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9F47851728B3A3EA004029F1 /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
 		9F47851928B3A400004029F1 /* CoinsViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewControllerBuilder.swift; sourceTree = "<group>"; };
+		9F47851C28B79848004029F1 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
+		9F47851E28B7985D004029F1 /* ModalViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewControllerBuilder.swift; sourceTree = "<group>"; };
 		9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerBuilder.swift; sourceTree = "<group>"; };
 		9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
@@ -96,12 +100,13 @@
 		9F41664E288D2CDD00374F8E /* BestCryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
-				9F47851628B3A385004029F1 /* CoinsList */,
-				9F8ED09D28B37443001E0D6B /* Detail */,
+				9F47851628B3A385004029F1 /* CoinsListViewController */,
+				9F47851B28B79825004029F1 /* ModalViewController */,
+				9F8ED09D28B37443001E0D6B /* DetailViewController */,
+				9F416666288D2E8400374F8E /* View Controllers */,
 				9F41667B2892BF5700374F8E /* Services */,
 				9F41666E2892533F00374F8E /* Models */,
 				9F416669288D7B0500374F8E /* Views */,
-				9F416666288D2E8400374F8E /* View Controllers */,
 				9F416665288D2E7100374F8E /* LaunchScreen */,
 				9F416663288D2E4200374F8E /* Supporting Files */,
 				9F416664288D2E6200374F8E /* Resourses */,
@@ -140,7 +145,6 @@
 			children = (
 				9F416667288D307600374F8E /* LoginViewController.swift */,
 				9F416671289274C700374F8E /* MainTabBarController.swift */,
-				9F41668F289966FF00374F8E /* ModalViewController.swift */,
 				9F4166752892832900374F8E /* ProfileViewController.swift */,
 				9FBC734528AA366B001F7CE6 /* BackgroundViewController.swift */,
 			);
@@ -187,24 +191,34 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		9F47851628B3A385004029F1 /* CoinsList */ = {
+		9F47851628B3A385004029F1 /* CoinsListViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9F4166872893A98C00374F8E /* CoinsViewController.swift */,
 				9F47851728B3A3EA004029F1 /* CoinsViewModel.swift */,
 				9F47851928B3A400004029F1 /* CoinsViewControllerBuilder.swift */,
 			);
-			path = CoinsList;
+			path = CoinsListViewController;
 			sourceTree = "<group>";
 		};
-		9F8ED09D28B37443001E0D6B /* Detail */ = {
+		9F47851B28B79825004029F1 /* ModalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9F41668F289966FF00374F8E /* ModalViewController.swift */,
+				9F47851C28B79848004029F1 /* ModalViewModel.swift */,
+				9F47851E28B7985D004029F1 /* ModalViewControllerBuilder.swift */,
+			);
+			path = ModalViewController;
+			sourceTree = "<group>";
+		};
+		9F8ED09D28B37443001E0D6B /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9F416693289B0DDC00374F8E /* DetailViewController.swift */,
 				9F8ED09E28B37475001E0D6B /* DetailViewModel.swift */,
 				9F8ED0A228B37E4F001E0D6B /* DetailsViewControllerBuilder.swift */,
 			);
-			path = Detail;
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +293,7 @@
 			files = (
 				9F416690289966FF00374F8E /* ModalViewController.swift in Sources */,
 				9F4166862893A67D00374F8E /* CoinsTableViewCell.swift in Sources */,
+				9F47851D28B79848004029F1 /* ModalViewModel.swift in Sources */,
 				9F4166812892BF8A00374F8E /* NetworkDataFetcher.swift in Sources */,
 				9F41667F2892BF8A00374F8E /* NetworkService.swift in Sources */,
 				9F8ED0A328B37E4F001E0D6B /* DetailsViewControllerBuilder.swift in Sources */,
@@ -296,6 +311,7 @@
 				9F41668C2895BDB900374F8E /* SortBy.swift in Sources */,
 				9F41666B288D7B1E00374F8E /* LoginView.swift in Sources */,
 				9F4166922899B6F700374F8E /* SortViewCell.swift in Sources */,
+				9F47851F28B7985D004029F1 /* ModalViewControllerBuilder.swift in Sources */,
 				9F416652288D2CDD00374F8E /* SceneDelegate.swift in Sources */,
 				9F4166882893A98C00374F8E /* CoinsViewController.swift in Sources */,
 				9F4166762892832900374F8E /* ProfileViewController.swift in Sources */,

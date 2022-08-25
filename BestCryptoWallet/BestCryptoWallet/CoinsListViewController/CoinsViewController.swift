@@ -8,16 +8,15 @@
 import UIKit
 import Combine
 
-class CoinsViewController: UIViewController {
+final class CoinsViewController: UIViewController {
     
-    var coins: [Items]!
-    var viewModel: CoinsViewModel? {
+    var coins: [Items]! {
         didSet {
-            viewModel?.getCoinsModel {
-                self.tableView.reloadData()
-            }
+            tableView.reloadData()
         }
     }
+    var viewModel: CoinsViewModel?
+
     private var cancellables: Set<AnyCancellable> = []
     
     private let tableView: UITableView = {
@@ -28,21 +27,27 @@ class CoinsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
-        tableView.backgroundColor = .systemGray6
-        tableView.separatorStyle = .none
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+        setupTableView()
         
         setupNavigation()
         setupBinders()
+        viewModel?.getCoinsModel()
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+    }
+    
+    private func setupTableView() {
+        tableView.backgroundColor = .systemGray6
+        tableView.separatorStyle = .none
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        view.addSubview(tableView)
     }
     
     private func setupNavigation() {
@@ -52,8 +57,9 @@ class CoinsViewController: UIViewController {
     }
     
     @objc func presentModalController() {
-        let modalViewController = ModalViewController()
-        modalViewController.delegate = self
+        guard let viewModel = viewModel else { return }
+        let modalViewController = ModalViewControllerBuilder.build(coinsViewModel: viewModel)
+       
         let nav = UINavigationController(rootViewController: modalViewController)
         nav.modalPresentationStyle = .pageSheet
         
@@ -122,6 +128,9 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
         let detailVC = DetailsViewControllerBuilder.build(symbol: symbol)
         
         present(detailVC, animated: true)
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.setSelected(false, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -153,30 +162,4 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    
 }
-
-extension CoinsViewController: SortViewControllerDelegate {
-    
-    func sortBy(option: SortBy) {
-        switch option {
-        case .fallingInAnHour:
-            coins = coins.sorted(by: { $0.metrics.market_data.percent_change_usd_last_1_hour ?? 0 > $1.metrics.market_data.percent_change_usd_last_1_hour ?? 0
-            })
-        case .growthInAnHour:
-            coins = coins.sorted(by: { $0.metrics.market_data.percent_change_usd_last_1_hour ?? 0 < $1.metrics.market_data.percent_change_usd_last_1_hour ?? 0
-            })
-        case .fallingPerDay:
-            coins = coins.sorted(by: { $0.metrics.market_data.percent_change_usd_last_24_hours ?? 0 > $1.metrics.market_data.percent_change_usd_last_24_hours ?? 0
-            })
-        case .growthPerDay:
-            coins = coins.sorted(by: { $0.metrics.market_data.percent_change_usd_last_24_hours ?? 0 < $1.metrics.market_data.percent_change_usd_last_24_hours ?? 0
-            })
-        }
-        
-        tableView.reloadData()
-    }
-    
-   
-}
-
