@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Combine
 
-class DetailViewController: BackgroundViewController {
+final class DetailViewController: BackgroundViewController {
     
     let iconImage: UIImageView = {
         let imageView = UIImageView()
@@ -28,41 +29,58 @@ class DetailViewController: BackgroundViewController {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont(name: "Damascus", size: 18)
+        label.font = UIFont(name: "Damascus", size: 17)
         return label
     }()
     
-    var symbol: String?
+    var resourceLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Damascus", size: 17)
+        label.isUserInteractionEnabled = true
+        label.textColor = .blue
+        return label
+    }()
+    
+    var viewModel: DetailViewModel?
+    private var observer: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         view.addSubview(nameLabel)
         view.addSubview(taglineLabel)
         view.addSubview(iconImage)
+        view.addSubview(resourceLabel)
         
-        getInfo()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(moveOnURL))
+        resourceLabel.addGestureRecognizer(tapGesture)
+        
+        setupBinders()
+        viewModel?.getCoinModel()
         setupConstraints()
     }
     
-    private func getInfo() {
-        if let symbol = symbol {
-            DataFetcherService.sharedInstance.fetchOneCoin(symbol: symbol) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let oneCoin):
-                    self.nameLabel.text = oneCoin?.data.name ?? "No name"
-                    self.taglineLabel.text = oneCoin?.data.tagline ?? "Нет слогана"
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+    private func setupBinders() {
+        guard let viewModel = viewModel else { return }
+        observer = viewModel.$oneCoinModel.sink(receiveValue: { [weak self] oneCoinModel in
+            guard let self = self else { return }
+            self.nameLabel.text = oneCoinModel?.data.name ?? "Нет информации"
+            self.taglineLabel.text = oneCoinModel?.data.tagline ?? "Нет слогана"
+            self.resourceLabel.text = oneCoinModel?.data.relevant_resources?[0].url ?? "Нет ссылки"
+        })
+    }
+    
+    @objc func moveOnURL() {
+        UIApplication.shared.open(URL(string: resourceLabel.text ?? "")! as URL, options: [:], completionHandler: nil  )
     }
     
     private func setupConstraints() {
         iconImage.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         taglineLabel.translatesAutoresizingMaskIntoConstraints = false
+        resourceLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             iconImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
@@ -75,7 +93,11 @@ class DetailViewController: BackgroundViewController {
             taglineLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             taglineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             taglineLabel.heightAnchor.constraint(equalToConstant: 50),
-            taglineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 30)
+            taglineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            resourceLabel.topAnchor.constraint(equalTo: taglineLabel.bottomAnchor, constant: 10),
+            resourceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            resourceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            resourceLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 

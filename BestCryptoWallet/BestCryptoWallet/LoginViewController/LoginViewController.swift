@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import Combine
 
 final class LoginViewController: UIViewController {
     
     var loginView: LoginView
-    private let userData: UserData
+    var viewModel: LoginViewModel?
+    var login: String?
+    var password: String?
+    private var cancellables: Set<AnyCancellable> = []
     
-    init(loginView: LoginView, userData: UserData) {
+    init(loginView: LoginView) {
         self.loginView = loginView
-        self.userData = userData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,10 +27,13 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addConstraints()
+        viewModel?.getUserData()
         self.loginView.loginAction = loginPressed
         loginView.loginTextField.delegate = self
         loginView.passwordTextField.delegate = self
+       
     }
     
     
@@ -44,13 +50,21 @@ final class LoginViewController: UIViewController {
     }
     
     func loginPressed() {
+        guard let viewModel = viewModel else { return }
+        viewModel.$login.sink { [weak self] login in
+            guard let self = self else { return }
+            self.login = login
+        }.store(in: &cancellables)
+        viewModel.$password.sink { [weak self] password in
+            guard let self = self else { return }
+            self.password = password
+        }.store(in: &cancellables)
         guard
-            loginView.loginTextField.text == userData.login,
-            loginView.passwordTextField.text == userData.password
-        else {
-            showAlert(title: "Неверный логин или пароль", message: "Пожалуйста, введите корректные данные")
-            return
-        }
+            self.loginView.loginTextField.text == login,
+            self.loginView.passwordTextField.text == password else {
+                self.showAlert(title: "Неверный логин или пароль", message: "Пожалуйста, введите корректные данные")
+                return
+            }
         let mainTabBarController = MainTabBarController()
         UserDefaults.standard.set(true, forKey: "Logged_in")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
