@@ -14,10 +14,9 @@ struct OneCoinModel: Decodable {
 struct Item: Decodable {
     let name: String?
     let tagline: String?
-    let token_distribution: TokenDistribution
+    let relevant_resources: [Resources]?
 }
 
-struct TokenDistribution: Decodable {
-    let sale_start: String?
-    let description: String?
+struct Resources: Decodable {
+    let url: String?
 }

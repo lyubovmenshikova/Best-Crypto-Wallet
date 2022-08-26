@@ -11,8 +11,8 @@ final class LoginViewControllerBuilder {
     
     static func build() -> LoginViewController {
         let loginView = LoginView()
-        let loginViewController = LoginViewController(loginView: loginView, userData: UserData.getUserData())
-        let viewModel = LoginViewModel()
+        let loginViewController = LoginViewController(loginView: loginView)
+        let viewModel = LoginViewModel(userData: UserData.getUserData())
         
         loginViewController.viewModel = viewModel
         

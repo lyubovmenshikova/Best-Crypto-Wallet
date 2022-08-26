@@ -52,7 +52,7 @@ class ProfileViewController: BackgroundViewController {
     }
     
     @objc func logOutButtonPressed() {
-        let loginViewController = LoginViewController(loginView: LoginView(), userData: UserData.getUserData())
+        let loginViewController = LoginViewControllerBuilder.build()
         UserDefaults.standard.set(false, forKey: "Logged_in")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)
         UserDefaults.standard.removeObject(forKey: "selectedIndex")
